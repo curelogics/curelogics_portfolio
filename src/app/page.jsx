@@ -1,4 +1,5 @@
-"use client";
+'use client';
+
 import AboutSection from "@/sections/aboutSection/AboutSection";
 import Banner from "@/sections/banner/Banner";
 import ContactForm from "@/sections/contact/ContactForm";
@@ -14,19 +15,20 @@ import TeamMembers from "@/sections/teamMember/TeamMembers";
 import ToolTechnologies from "@/sections/technologyies/ToolTechnologies";
 import TestimonialsSection from "@/sections/testimonials/Testimonials";
 import WhyCureLogics from "@/sections/whycurelogics/WhyCurelogics";
-import React, { useState, useEffect, useCallback, Suspense } from "react";
+import BlogSection from "@/sections/blogsSection/BlogsSection";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
-import BlogSection from "@/sections/blogsSection/BlogsSection";
 
-// Preloader Component
+// Enhanced Preloader Component with SEO considerations
 const Preloader = ({ onComplete, isVisible }) => {
   const [progress, setProgress] = useState(0);
-  const [loadingStage, setLoadingStage] = useState("initializing");
+  const [loadingStage, setLoadingStage] = useState('initializing');
   const [fadeOut, setFadeOut] = useState(false);
 
   const completeLoading = useCallback(() => {
     setFadeOut(true);
+    // Use requestAnimationFrame for smooth transition
     requestAnimationFrame(() => {
       setTimeout(() => {
         onComplete();
@@ -41,26 +43,31 @@ const Preloader = ({ onComplete, isVisible }) => {
 
     const simulateRealisticLoading = async () => {
       try {
-        setLoadingStage("initializing");
-        await new Promise((resolve) => setTimeout(resolve, 300));
+        // Stage 1: Initialize (0-20%)
+        setLoadingStage('initializing');
+        await new Promise(resolve => setTimeout(resolve, 300));
         if (isCancelled) return;
         setProgress(20);
 
-        setLoadingStage("loading-assets");
+        // Stage 2: Load critical resources (20-60%)
+        setLoadingStage('loading-assets');
         const criticalResources = [
+          // Preload logo
           new Promise((resolve) => {
             const img = new window.Image();
             img.onload = img.onerror = resolve;
-            img.src = "/images/fulllogo.png";
+            img.src = '/images/fulllogo.png';
           }),
-          new Promise((resolve) => setTimeout(resolve, 400)),
-          new Promise((resolve) => setTimeout(resolve, 200)),
+          // Simulate font loading
+          new Promise(resolve => setTimeout(resolve, 400)),
+          // Simulate critical CSS
+          new Promise(resolve => setTimeout(resolve, 200)),
         ];
 
         const resourcePromises = criticalResources.map((promise, index) =>
           promise.then(() => {
             if (!isCancelled) {
-              setProgress((prev) => Math.min(prev + 15, 60));
+              setProgress(prev => Math.min(prev + 15, 60));
             }
           })
         );
@@ -68,19 +75,21 @@ const Preloader = ({ onComplete, isVisible }) => {
         await Promise.all(resourcePromises);
         if (isCancelled) return;
 
-        setLoadingStage("hydrating");
-        await new Promise((resolve) => setTimeout(resolve, 400));
+        // Stage 3: Hydration simulation (60-85%)
+        setLoadingStage('hydrating');
+        await new Promise(resolve => setTimeout(resolve, 400));
         if (isCancelled) return;
         setProgress(85);
 
-        setLoadingStage("finalizing");
+        // Stage 4: Final touches (85-100%)
+        setLoadingStage('finalizing');
         const finalProgress = setInterval(() => {
           if (isCancelled) {
             clearInterval(finalProgress);
             return;
           }
 
-          setProgress((prev) => {
+          setProgress(prev => {
             if (prev >= 100) {
               clearInterval(finalProgress);
               completeLoading();
@@ -90,11 +99,12 @@ const Preloader = ({ onComplete, isVisible }) => {
           });
         }, 100);
 
+        // Cleanup function to clear interval
         return () => {
           clearInterval(finalProgress);
         };
       } catch (error) {
-        console.warn("Preloader error:", error);
+        console.warn('Preloader error:', error);
         completeLoading();
       }
     };
@@ -110,64 +120,66 @@ const Preloader = ({ onComplete, isVisible }) => {
 
   const getLoadingText = () => {
     switch (loadingStage) {
-      case "initializing":
-        return "Initializing...";
-      case "loading-assets":
-        return "Loading assets...";
-      case "hydrating":
-        return "Preparing content...";
-      case "finalizing":
-        return "Almost ready...";
-      default:
-        return "Loading...";
+      case 'initializing': return 'Initializing...';
+      case 'loading-assets': return 'Loading assets...';
+      case 'hydrating': return 'Preparing content...';
+      case 'finalizing': return 'Almost ready...';
+      default: return 'Loading...';
     }
   };
 
   return (
     <div
       className={`fixed inset-0 z-[9999] flex items-center justify-center bg-white transition-all duration-400 ${
-        fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
+        fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       style={{
-        willChange: "opacity",
-        visibility: fadeOut ? "hidden" : "visible",
+        willChange: 'opacity',
+        // Ensure preloader doesn't interfere with SEO
+        visibility: fadeOut ? 'hidden' : 'visible',
       }}
       aria-hidden="true"
       role="presentation"
     >
+      {/* Background Gradient */}
       <div className="absolute inset-0 opacity-5" aria-hidden="true">
         <div
           className="w-full h-full"
           style={{
             background:
-              "linear-gradient(135deg, rgba(253, 3, 3, 0.1) 29%, rgba(41, 34, 195, 0.1) 100%)",
+              'linear-gradient(135deg, rgba(253, 3, 3, 0.1) 29%, rgba(41, 34, 195, 0.1) 100%)',
           }}
         />
       </div>
 
+      {/* Main Content */}
       <div className="relative flex flex-col items-center justify-center space-y-8 max-w-sm mx-auto px-4">
+        {/* Logo Container with Animation */}
         <div className="relative" role="img" aria-label="CureLogics Logo Loading">
+          {/* Animated Ring */}
           <div className="absolute inset-0 w-32 h-32 -m-4" aria-hidden="true">
             <div
               className="w-full h-full rounded-full border-4 border-transparent"
               style={{
-                borderTopColor: "rgba(253, 3, 3, 0.8)",
-                borderRightColor: "rgba(41, 34, 195, 0.8)",
-                animation: "spin 2s linear infinite",
-                transform: "translateZ(0)",
+                borderTopColor: 'rgba(253, 3, 3, 0.8)',
+                borderRightColor: 'rgba(41, 34, 195, 0.8)',
+                animation: 'spin 2s linear infinite',
+                transform: 'translateZ(0)',
               }}
             />
           </div>
+          {/* Pulsing Background Circle */}
           <div
             className="absolute inset-0 w-24 h-24 rounded-full"
             style={{
               background:
-                "linear-gradient(135deg, rgba(253, 3, 3, 0.1) 29%, rgba(41, 34, 195, 0.1) 100%)",
-              animation: "pulse 1.5s ease-in-out infinite",
-              transform: "translateZ(0)",
+                'linear-gradient(135deg, rgba(253, 3, 3, 0.1) 29%, rgba(41, 34, 195, 0.1) 100%)',
+              animation: 'pulse 1.5s ease-in-out infinite',
+              transform: 'translateZ(0)',
             }}
             aria-hidden="true"
           />
+          {/* Logo with Next.js Image optimization */}
           <div className="relative w-24 h-24 flex items-center justify-center">
             <div className="relative w-20 h-20">
               <Image
@@ -176,8 +188,8 @@ const Preloader = ({ onComplete, isVisible }) => {
                 fill
                 className="object-contain"
                 style={{
-                  animation: "pulse 1.5s ease-in-out infinite",
-                  transform: "translateZ(0)",
+                  animation: 'pulse 1.5s ease-in-out infinite',
+                  transform: 'translateZ(0)',
                 }}
                 priority
                 sizes="80px"
@@ -187,15 +199,16 @@ const Preloader = ({ onComplete, isVisible }) => {
           </div>
         </div>
 
+        {/* Company Name */}
         <div className="text-center space-y-2">
           <h1
             className="text-3xl font-bold tracking-wider"
             style={{
               background:
-                "linear-gradient(135deg, rgba(253, 3, 3, 1) 29%, rgba(41, 34, 195, 1) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+                'linear-gradient(135deg, rgba(253, 3, 3, 1) 29%, rgba(41, 34, 195, 1) 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
             }}
           >
             CURELOGICS
@@ -205,6 +218,7 @@ const Preloader = ({ onComplete, isVisible }) => {
           </p>
         </div>
 
+        {/* Progress Bar */}
         <div
           className="w-full max-w-xs space-y-3"
           role="progressbar"
@@ -218,12 +232,13 @@ const Preloader = ({ onComplete, isVisible }) => {
               style={{
                 width: `${Math.min(progress, 100)}%`,
                 background:
-                  "linear-gradient(90deg, rgba(253, 3, 3, 1) 29%, rgba(41, 34, 195, 1) 100%)",
-                willChange: "width",
-                transform: "translateZ(0)",
+                  'linear-gradient(90deg, rgba(253, 3, 3, 1) 29%, rgba(41, 34, 195, 1) 100%)',
+                willChange: 'width',
+                transform: 'translateZ(0)',
               }}
             />
           </div>
+          {/* Loading Text */}
           <div className="flex justify-between items-center text-xs text-gray-500">
             <span className="font-medium" aria-live="polite">
               {getLoadingText()}
@@ -234,6 +249,7 @@ const Preloader = ({ onComplete, isVisible }) => {
           </div>
         </div>
 
+        {/* Loading Dots */}
         <div className="flex space-x-2" aria-hidden="true">
           {[0, 1, 2].map((i) => (
             <div
@@ -242,34 +258,36 @@ const Preloader = ({ onComplete, isVisible }) => {
               style={{
                 backgroundColor:
                   i === 0
-                    ? "rgba(253, 3, 3, 0.8)"
+                    ? 'rgba(253, 3, 3, 0.8)'
                     : i === 1
-                    ? "rgba(147, 28, 99, 0.8)"
-                    : "rgba(41, 34, 195, 0.8)",
+                    ? 'rgba(147, 28, 99, 0.8)'
+                    : 'rgba(41, 34, 195, 0.8)',
                 animation: `bounce 1s infinite ${i * 0.2}s`,
-                transform: "translateZ(0)",
+                transform: 'translateZ(0)',
               }}
             />
           ))}
         </div>
       </div>
 
+      {/* Optimized Floating Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         {[...Array(4)].map((_, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 rounded-full opacity-30"
             style={{
-              backgroundColor: i % 2 === 0 ? "rgba(253, 3, 3, 0.4)" : "rgba(41, 34, 195, 0.4)",
+              backgroundColor: i % 2 === 0 ? 'rgba(253, 3, 3, 0.4)' : 'rgba(41, 34, 195, 0.4)',
               left: `${20 + i * 20}%`,
               top: `${30 + i * 15}%`,
               animation: `float 4s infinite ${i * 0.8}s`,
-              transform: "translateZ(0)",
+              transform: 'translateZ(0)',
             }}
           />
         ))}
       </div>
 
+      {/* Optimized CSS Animations */}
       <style jsx>{`
         @keyframes float {
           0%,
@@ -324,66 +342,73 @@ const Preloader = ({ onComplete, isVisible }) => {
   );
 };
 
-// Separate component for useSearchParams logic
-const PreloaderController = ({ onPreloaderVisibilityChange }) => {
+const LandingPage = () => {
+  const [showPreloader, setShowPreloader] = useState(true); // Start with preloader
+  const [isContentReady, setIsContentReady] = useState(false);
+  const [shouldRenderPreloader, setShouldRenderPreloader] = useState(false);
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    // Check if preloader should be shown on first visit of the session
     const shouldShowPreloader = () => {
+      // Check if it's a direct visit (not from navigation)
       const isDirectVisit =
         !document.referrer ||
         (document.referrer && new URL(document.referrer).origin !== window.location.origin);
-      const hasSeenPreloader = sessionStorage.getItem("curelogics-preloader-seen");
+      // Check session storage for return visits
+      const hasSeenPreloader = sessionStorage.getItem('curelogics-preloader-seen');
+      // Only show for direct visits and first-time visitors in session
       return isDirectVisit && !hasSeenPreloader;
     };
 
+    // Immediately determine if we should show preloader
     if (shouldShowPreloader()) {
-      onPreloaderVisibilityChange(true);
-      sessionStorage.setItem("curelogics-preloader-seen", "true");
+      setShouldRenderPreloader(true);
+      sessionStorage.setItem('curelogics-preloader-seen', 'true');
     } else {
-      onPreloaderVisibilityChange(false);
+      // Skip preloader entirely
+      setShowPreloader(false);
+      setIsContentReady(true);
     }
-  }, [pathname, searchParams, onPreloaderVisibilityChange]);
 
-  return null;
-};
+    // Always ensure content is ready for SEO (even with preloader)
+    const contentTimer = setTimeout(() => {
+      setIsContentReady(true);
+    }, 10);
 
-const LandingPage = () => {
-  const [showPreloader, setShowPreloader] = useState(true);
-  const [isContentReady, setIsContentReady] = useState(false);
+    return () => clearTimeout(contentTimer);
+  }, [pathname, searchParams]);
 
   const handlePreloaderComplete = useCallback(() => {
     setShowPreloader(false);
+    // Ensure content is visible after preloader
     setTimeout(() => {
       setIsContentReady(true);
     }, 100);
   }, []);
 
-  const handlePreloaderVisibilityChange = useCallback((shouldShow) => {
-    if (!shouldShow) {
-      setShowPreloader(false);
-      setIsContentReady(true);
-    } else {
-      setShowPreloader(true);
-      setTimeout(() => {
-        setIsContentReady(true);
-      }, 10);
-    }
-  }, []);
+  // Don't render anything until we know if preloader should show
+  // This prevents flash of content
+  if (shouldRenderPreloader && showPreloader && !isContentReady) {
+    return (
+      <Preloader
+        onComplete={handlePreloaderComplete}
+        isVisible={true}
+      />
+    );
+  }
 
+  // Always render content for SEO - preloader is just an overlay
   return (
     <>
-      <Suspense fallback={<div>Loading preloader...</div>}>
-        <PreloaderController onPreloaderVisibilityChange={handlePreloaderVisibilityChange} />
-      </Suspense>
-
+      {/* SEO-friendly content - always rendered */}
       <div
         className="overflow-hidden"
         style={{
-          opacity: showPreloader ? 0 : 1,
-          transition: "opacity 0.5s ease-in-out",
-          visibility: isContentReady ? "visible" : "hidden",
+          opacity: shouldRenderPreloader && showPreloader ? 0 : 1,
+          transition: 'opacity 0.5s ease-in-out',
+          visibility: isContentReady ? 'visible' : 'hidden',
         }}
       >
         <header>
@@ -450,8 +475,12 @@ const LandingPage = () => {
         </footer>
       </div>
 
-      {showPreloader && (
-        <Preloader onComplete={handlePreloaderComplete} isVisible={showPreloader} />
+      {/* Preloader Overlay - Only for UX enhancement, shows immediately if needed */}
+      {shouldRenderPreloader && (
+        <Preloader
+          onComplete={handlePreloaderComplete}
+          isVisible={showPreloader}
+        />
       )}
     </>
   );
