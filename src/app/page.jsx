@@ -16,7 +16,7 @@ import ToolTechnologies from "@/sections/technologyies/ToolTechnologies";
 import TestimonialsSection from "@/sections/testimonials/Testimonials";
 import WhyCureLogics from "@/sections/whycurelogics/WhyCurelogics";
 import BlogSection from "@/sections/blogsSection/BlogsSection";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, Suspense } from "react";
 import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -342,10 +342,8 @@ const Preloader = ({ onComplete, isVisible }) => {
   );
 };
 
-const LandingPage = () => {
-  const [showPreloader, setShowPreloader] = useState(true); // Start with preloader
-  const [isContentReady, setIsContentReady] = useState(false);
-  const [shouldRenderPreloader, setShouldRenderPreloader] = useState(false);
+// Separate component for useSearchParams logic to handle Suspense
+const PreloaderController = ({ onPreloaderVisibilityChange }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -362,23 +360,21 @@ const LandingPage = () => {
       return isDirectVisit && !hasSeenPreloader;
     };
 
-    // Immediately determine if we should show preloader
     if (shouldShowPreloader()) {
-      setShouldRenderPreloader(true);
+      onPreloaderVisibilityChange(true);
       sessionStorage.setItem('curelogics-preloader-seen', 'true');
     } else {
-      // Skip preloader entirely
-      setShowPreloader(false);
-      setIsContentReady(true);
+      onPreloaderVisibilityChange(false);
     }
+  }, [pathname, searchParams, onPreloaderVisibilityChange]);
 
-    // Always ensure content is ready for SEO (even with preloader)
-    const contentTimer = setTimeout(() => {
-      setIsContentReady(true);
-    }, 10);
+  return null;
+};
 
-    return () => clearTimeout(contentTimer);
-  }, [pathname, searchParams]);
+const LandingPage = () => {
+  const [showPreloader, setShowPreloader] = useState(true); // Start with preloader
+  const [isContentReady, setIsContentReady] = useState(false);
+  const [shouldRenderPreloader, setShouldRenderPreloader] = useState(false);
 
   const handlePreloaderComplete = useCallback(() => {
     setShowPreloader(false);
@@ -386,6 +382,20 @@ const LandingPage = () => {
     setTimeout(() => {
       setIsContentReady(true);
     }, 100);
+  }, []);
+
+  const handlePreloaderVisibilityChange = useCallback((shouldShow) => {
+    if (!shouldShow) {
+      setShowPreloader(false);
+      setIsContentReady(true);
+    } else {
+      setShouldRenderPreloader(true);
+      setShowPreloader(true);
+      // Ensure content is ready for SEO even with preloader
+      setTimeout(() => {
+        setIsContentReady(true);
+      }, 10);
+    }
   }, []);
 
   // Don't render anything until we know if preloader should show
@@ -402,7 +412,10 @@ const LandingPage = () => {
   // Always render content for SEO - preloader is just an overlay
   return (
     <>
-      {/* SEO-friendly content - always rendered */}
+      <Suspense fallback={<div>Loading preloader...</div>}>
+        <PreloaderController onPreloaderVisibilityChange={handlePreloaderVisibilityChange} />
+      </Suspense>
+
       <div
         className="overflow-hidden"
         style={{
@@ -475,7 +488,6 @@ const LandingPage = () => {
         </footer>
       </div>
 
-      {/* Preloader Overlay - Only for UX enhancement, shows immediately if needed */}
       {shouldRenderPreloader && (
         <Preloader
           onComplete={handlePreloaderComplete}
