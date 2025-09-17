@@ -49,7 +49,7 @@ const ProjectCard = ({ project }) => {
             {/* Loading Placeholder */}
             {!imageLoaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-red-50 to-blue-50">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-red-500 to-blue-500 relative">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-red-600 to-blue-900 relative">
                   <div className="absolute inset-2 rounded-full bg-white animate-spin">
                     <div className="w-2 h-2 bg-red-500 rounded-full absolute top-1 left-1/2 transform -translate-x-1/2"></div>
                   </div>
@@ -177,8 +177,8 @@ const ProjectCard = ({ project }) => {
                 rel="noopener noreferrer"
                 className={`
                   group/link flex items-center space-x-1 sm:space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full
-                  bg-gradient-to-r from-red-500 to-blue-500 text-white text-xs sm:text-sm font-medium
-                  hover:from-red-600 hover:to-blue-600 hover:shadow-lg hover:shadow-red-500/25
+                  bg-gradient-to-r from-red-600 to-blue-900 text-white text-xs sm:text-sm font-medium
+                  hover:from-red-500 hover:to-blue-800 hover:shadow-lg hover:shadow-red-500/25
                   transform transition-all duration-300 hover:scale-105 active:scale-95
                   ${isHovered ? 'animate-pulse' : ''}
                 `}
@@ -203,7 +203,7 @@ const ProjectCard = ({ project }) => {
           {[...Array(3)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-gradient-to-r from-red-400 to-blue-400 rounded-full"
+              className="absolute w-1 h-1 bg-gradient-to-r from-red-600 to-blue-900 rounded-full"
               style={{
                 left: `${25 + i * 20}%`,
                 top: `${40 + i * 15}%`,
@@ -385,12 +385,12 @@ const ProjectsSection = () => {
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-red-500 to-red-600 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-red-400 to-blue-400 rounded-full blur-2xl animate-pulse delay-500"></div>
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-red-600 to-blue-900 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
 
       {/* Animated Grid Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="h-full w-full bg-gradient-to-r from-red-500 to-blue-500" 
+        <div className="h-full w-full bg-gradient-to-r from-red-600 to-blue-900" 
              style={{
                backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
                backgroundSize: '40px 40px'
@@ -403,7 +403,7 @@ const ProjectsSection = () => {
         <div className="text-center mb-16 relative">
           {/* Main Heading */}
           <div className="relative">
-            <h2 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-red-600 via-red-500 to-blue-600 bg-clip-text text-transparent mb-4 leading-tight">
+            <h2 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-red-600 via-red-500 to-blue-900 bg-clip-text text-transparent mb-4 leading-tight">
               Our Projects
             </h2>
           </div>
@@ -417,7 +417,7 @@ const ProjectsSection = () => {
           {/* Decorative Line */}
           <div className="flex items-center justify-center mt-8">
             <div className="h-px bg-gradient-to-r from-transparent via-red-500 to-transparent w-32"></div>
-            <div className="w-2 h-2 bg-gradient-to-r from-red-500 to-blue-500 rounded-full mx-4"></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-red-600 to-blue-900 rounded-full mx-4"></div>
             <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent w-32"></div>
           </div>
         </div>
@@ -425,7 +425,7 @@ const ProjectsSection = () => {
         {/* Enhanced Navigation Section */}
         <div className="flex justify-between items-center mb-12">
           <div className="hidden lg:flex items-center space-x-4">
-            <div className="h-px bg-gradient-to-r from-red-500 to-blue-500 w-20"></div>
+            <div className="h-px bg-gradient-to-r from-red-600 to-blue-900 w-20"></div>
             <span className="text-sm font-semibold text-gray-600 uppercase tracking-wider">Portfolio Showcase</span>
           </div>
 
@@ -437,12 +437,12 @@ const ProjectsSection = () => {
               aria-label="Previous slide"
             >
               <MoveLeft className="w-5 h-5 text-gray-600 group-hover:text-red-500 transition-colors duration-300" />
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500 to-blue-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-600 to-blue-900 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
             </button>
             
             <div className="hidden lg:flex items-center space-x-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200">
               <div className="flex space-x-1">
-                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-red-500 to-blue-500 animate-pulse"></div>
+                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-red-600 to-blue-900 animate-pulse"></div>
                 <div className="w-2 h-2 rounded-full bg-gray-300 animate-pulse delay-200"></div>
                 <div className="w-2 h-2 rounded-full bg-gray-300 animate-pulse delay-400"></div>
               </div>
@@ -455,7 +455,7 @@ const ProjectsSection = () => {
               aria-label="Next slide"
             >
               <MoveRight className="w-5 h-5 text-gray-600 group-hover:text-blue-500 transition-colors duration-300" />
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500 to-blue-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-600 to-blue-900 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
             </button>
           </div>
         </div>
@@ -484,7 +484,7 @@ const ProjectsSection = () => {
         <div className="text-center mt-8">
           <div className="inline-flex items-center space-x-4 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm">
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-red-500 to-blue-500"></div>
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-red-600 to-blue-900"></div>
               <span className="text-sm font-semibold text-gray-700">{sampleProjects.length} Projects</span>
             </div>
             <div className="w-px h-4 bg-gray-300"></div>

@@ -73,25 +73,25 @@ const Footer = () => {
             <div className="flex space-x-4 mt-4">
               <a
                 href="https://facebook.com/curelogics"
-                className="w-10 h-10 hover:w-[38px] hover:h-[38px] rounded-full bg-[#2C5194] hover:bg-[#2c50946c] flex items-center justify-center transition-all"
+                className="w-10 h-10 bg-gradient-to-r from-red-600 to-blue-800 rounded-full hover:bg-gradient-to-l hover:from-red-500 hover:to-blue-900 flex items-center justify-center"
               >
                 <FaFacebookF className="text-white" />
               </a>
               <a
                 href="https://twitter.com/curelogics"
-                className="w-10 h-10 hover:w-[38px] hover:h-[38px] rounded-full bg-[#2C5194] hover:bg-[#2c50946c] flex items-center justify-center transition-all"
+                className="w-10 h-10 bg-gradient-to-r from-red-600 to-blue-800 rounded-full hover:bg-gradient-to-l hover:from-red-500 hover:to-blue-900 flex items-center justify-center"
               >
                 <FaTwitter className="text-white" />
               </a>
               <a
                 href="https://instagram.com/curelogics"
-                className="w-10 h-10 hover:w-[38px] hover:h-[38px] rounded-full bg-[#2C5194] hover:bg-[#2c50946c] flex items-center justify-center transition-all"
+                className="w-10 h-10 bg-gradient-to-r from-red-600 to-blue-800 rounded-full hover:bg-gradient-to-l hover:from-red-500 hover:to-blue-900 flex items-center justify-center"
               >
                 <FaInstagram className="text-white" />
               </a>
               <a
                 href="https://linkedin.com/company/curelogics"
-                className="w-10 h-10 hover:w-[38px] hover:h-[38px] rounded-full bg-[#2C5194] hover:bg-[#2c50946c] flex items-center justify-center transition-all"
+                className="w-10 h-10 bg-gradient-to-r from-red-600 to-blue-800 rounded-full hover:bg-gradient-to-l hover:from-red-500 hover:to-blue-900 flex items-center justify-center"
               >
                 <FaLinkedinIn className="text-white" />
               </a>
@@ -115,7 +115,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.path}
-                    className={`hover:underline ${
+                    className={`hover:underline hover:text-red-400 ${
                       router.pathname === "/" && link.path.includes("#")
                         ? typeof window !== "undefined" &&
                           window.location.hash === link.path.split("/")[1]
@@ -150,7 +150,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.path}
-                    className={`hover:underline ${
+                    className={`hover:underline hover:text-red-400 ${
                       router.pathname === "/" &&
                       typeof window !== "undefined" &&
                       window.location.hash === link.path.split("/")[1]
@@ -174,7 +174,7 @@ const Footer = () => {
               Subscribe to get the latest digital updates from us.
             </p>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="relative bg-gradient-to-r to-red-500 from-blue-500 rounded-full p-[1px]">
+              <div className="relative bg-gradient-to-r to-blue-900 from-red-600 rounded-full p-[1px]">
                 <input
                   type="email"
                   placeholder="Enter your email"

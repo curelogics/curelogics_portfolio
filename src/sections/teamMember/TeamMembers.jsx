@@ -20,7 +20,7 @@ const FounderMessage = () => {
 
               {/* Main image container */}
               <div className="relative z-10">
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-blue-600 rounded-2xl transform rotate-3 shadow-xl opacity-20"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-blue-900 rounded-2xl transform rotate-3 shadow-xl opacity-20"></div>
                 <div className="relative rounded-2xl overflow-hidden border-4 border-white shadow-2xl transform transition-transform duration-500 hover:scale-[1.02]">
                   <Image
                     src="/images/founder.png"             // must be inside /public
@@ -43,7 +43,7 @@ const FounderMessage = () => {
                 <div className="text-center px-4">
                   <span className="text-red-500 font-bold text-lg block mb-1">Experience</span>
                   <div className="flex items-baseline justify-center gap-1">
-                    <span className="font-bold text-4xl bg-gradient-to-r from-red-500 to-blue-600 bg-clip-text text-transparent">10+</span>
+                    <span className="font-bold text-4xl bg-gradient-to-r from-red-600 to-blue-900 bg-clip-text text-transparent">10+</span>
                     <span className="text-gray-700 font-medium">Years</span>
                   </div>
                   <span className="text-gray-600 text-sm block mt-1">Since 2014</span>
@@ -60,7 +60,7 @@ const FounderMessage = () => {
 
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 leading-tight">
               Transforming Healthcare Through{" "}
-              <span className="bg-gradient-to-r from-red-500 via-red-600 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-red-500 via-red-600 to-blue-900 bg-clip-text text-transparent">
                 Innovation & Excellence
               </span>
             </h2>
@@ -108,19 +108,19 @@ const FounderMessage = () => {
                   name: "LinkedIn",
                   icon: FaLinkedin,
                   url: "https://linkedin.com/in/founder",
-                  color: "hover:bg-blue-600 hover:text-white"
+                  color: "hover:bg-gradient-to-r from-red-500 via-red-600 to-blue-900 hover:text-white"
                 },
                 {
                   name: "Twitter",
                   icon: FaTwitter,
                   url: "https://twitter.com/founder",
-                  color: "hover:bg-blue-500 hover:text-white"
+                  color: "hover:bg-gradient-to-r from-red-500 via-red-600 to-blue-900 hover:text-white"
                 },
                 {
                   name: "Email",
                   icon: FaEnvelope,
                   url: "mailto:founder@curelogics.com",
-                  color: "hover:bg-red-600 hover:text-white"
+                  color: "hover:bg-gradient-to-r from-red-500 via-red-600 to-blue-900 hover:text-white"
                 }
               ].map((platform) => {
                 const IconComponent = platform.icon;
@@ -202,7 +202,7 @@ const TeamMembers = () => {
                 data-aos="zoom-in"
                 data-aos-delay="400"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-red-500 to-blue-600 translate-y-[90%] group-hover:translate-y-0 transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-red-600 to-blue-900 translate-y-[90%] group-hover:translate-y-0 transition-all duration-500"></div>
                 <div className="relative z-10 flex items-center justify-center h-full gap-2 px-3 text-xl font-bold cursor-pointer text-gray-800 group-hover:text-white transition-colors">
                   <FaArrowRight />
                   Join Now
@@ -223,8 +223,8 @@ const TeamMembers = () => {
                 data-aos="zoom-in"
                 data-aos-delay="600"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-red-500 to-blue-500 translate-y-[100%] group-hover:translate-y-0 transition-all duration-700"></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-red-500 to-blue-500 translate-y-[95%] group-hover:hidden transition-transform duration-300 rounded-t-full"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-red-600 to-blue-900 translate-y-[100%] group-hover:translate-y-0 transition-all duration-700"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-red-600 to-blue-900 translate-y-[95%] group-hover:hidden transition-transform duration-300 rounded-t-full"></div>
                 <div className="relative z-10 flex items-center justify-center h-full gap-2 px-3 text-xl font-bold cursor-pointer text-gray-800 group-hover:text-white">
                   <FaArrowRight />
                   Join Now
@@ -236,19 +236,19 @@ const TeamMembers = () => {
           {/* Team Stats Section */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 w-full" data-aos="fade-up">
             <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-              <h3 className="text-4xl font-bold bg-gradient-to-r from-red-500 to-blue-600 bg-clip-text text-transparent mb-2">50+</h3>
+              <h3 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-blue-900 bg-clip-text text-transparent mb-2">50+</h3>
               <p className="text-gray-700 font-medium">Team Members</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-              <h3 className="text-4xl font-bold bg-gradient-to-r from-red-500 to-blue-600 bg-clip-text text-transparent mb-2">99%</h3>
+              <h3 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-blue-900 bg-clip-text text-transparent mb-2">99%</h3>
               <p className="text-gray-700 font-medium">Client Satisfaction</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-              <h3 className="text-4xl font-bold bg-gradient-to-r from-red-500 to-blue-600 bg-clip-text text-transparent mb-2">500+</h3>
+              <h3 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-blue-900 bg-clip-text text-transparent mb-2">500+</h3>
               <p className="text-gray-700 font-medium">Projects Completed</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-shadow">
-              <h3 className="text-4xl font-bold bg-gradient-to-r from-red-500 to-blue-600 bg-clip-text text-transparent mb-2">10+</h3>
+              <h3 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-blue-900 bg-clip-text text-transparent mb-2">10+</h3>
               <p className="text-gray-700 font-medium">Years Experience</p>
             </div>
           </div>

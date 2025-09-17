@@ -81,7 +81,7 @@ const Banner = () => {
           {/* Left Content */}
           <div className="lg:w-1/2 text-center lg:text-left space-y-6 md:space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-50 to-blue-50 border border-red-100 rounded-full text-xs md:text-sm font-medium text-gray-700">
-              <div className="w-2 h-2 bg-gradient-to-r from-red-500 to-blue-500 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-gradient-to-r from-red-600 to-blue-900 rounded-full animate-pulse"></div>
               Ready to innovate
             </div>
 
@@ -121,7 +121,7 @@ const Banner = () => {
                     />
                   </svg>
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-blue-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-blue-900 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
 
               <button className="px-6 md:px-8 py-3 md:py-4 text-gray-700 font-semibold border-2 border-gray-200 rounded-xl hover:border-red-300 hover:text-red-600 transition-all duration-300">
@@ -145,8 +145,9 @@ const Banner = () => {
                   {
                     value: activeClients,
                     title: "Active Clients",
-                    iconPath:
-                      "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z",
+                    iconPath: 
+                    `M12 14c4.418 0 8 1.79 8 4v2H4v-2c0-2.21 3.582-4 8-4zm0-2a4 4 0 100-8 4 4 0 000 8zm5.707-1.707l2 2-5 5-2-2 5-5z`
+
                   },
                   {
                     value: satisfiedClients,
@@ -157,9 +158,9 @@ const Banner = () => {
                 ].map((item, idx) => (
                   <div key={idx} className="text-center group">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-blue-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-blue-900 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity duration-300"></div>
                       <div className="relative bg-white rounded-2xl p-4 md:p-6 border border-gray-100 group-hover:border-red-200 transition-all duration-300">
-                        <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-red-500 to-blue-500 rounded-xl mx-auto mb-3 md:mb-4 flex items-center justify-center">
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-r from-red-600 to-blue-900 rounded-xl mx-auto mb-3 md:mb-4 flex items-center justify-center">
                           <svg
                             className="w-5 h-5 md:w-6 md:h-6 text-white"
                             fill="none"

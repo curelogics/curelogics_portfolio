@@ -42,7 +42,7 @@ const BlogCard = ({ blog }) => {
           <div className="relative h-40 sm:h-44 md:h-48 overflow-hidden rounded-t-2xl bg-gradient-to-br from-red-50 via-blue-50 to-purple-50">
             {!imageLoaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-red-50 to-blue-50">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-red-500 to-blue-500 relative">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-red-600 to-blue-900 relative">
                   <div className="absolute inset-2 rounded-full bg-white animate-spin">
                     <div className="w-2 h-2 bg-red-500 rounded-full absolute top-1 left-1/2 transform -translate-x-1/2"></div>
                   </div>
@@ -131,7 +131,7 @@ const BlogCard = ({ blog }) => {
           {[...Array(3)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-gradient-to-r from-red-400 to-blue-400 rounded-full"
+              className="absolute w-1 h-1 bg-gradient-to-r from-red-600 to-blue-900 rounded-full"
               style={{
                 left: `${25 + i * 20}%`,
                 top: `${40 + i * 15}%`,
@@ -174,13 +174,13 @@ const BlogSection = () => {
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-red-500 to-red-600 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-red-400 to-blue-400 rounded-full blur-2xl animate-pulse delay-500"></div>
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-red-600 to-blue-900 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
 
       {/* Animated Grid Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
-          className="h-full w-full bg-gradient-to-r from-red-500 to-blue-500"
+          className="h-full w-full bg-gradient-to-r from-red-600 to-blue-900"
           style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
             backgroundSize: "40px 40px",
@@ -203,7 +203,7 @@ const BlogSection = () => {
           </p>
           <div className="flex items-center justify-center mt-8">
             <div className="h-px bg-gradient-to-r from-transparent via-red-500 to-transparent w-32"></div>
-            <div className="w-2 h-2 bg-gradient-to-r from-red-500 to-blue-500 rounded-full mx-4"></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-red-600 to-blue-900 rounded-full mx-4"></div>
             <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent w-32"></div>
           </div>
         </div>
