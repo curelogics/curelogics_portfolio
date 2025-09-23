@@ -59,7 +59,7 @@ const BlogForm = ({ token, editingBlog, setEditingBlog, refreshBlogs }) => {
     if (editingBlog) formData.append("id", editingBlog._id)
 
     try {
-      const url = "/api/blogs"
+      const url = editingBlog ? "/api/blogs/update" : "/api/blogs/create"
       const method = editingBlog ? "PUT" : "POST"
 
       const response = await fetch(url, {
@@ -106,15 +106,6 @@ const BlogForm = ({ token, editingBlog, setEditingBlog, refreshBlogs }) => {
 
   return (
     <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-      {/* <div className="bg-gradient-to-r from-slate-50 to-gray-50 px-8 py-6 border-b border-gray-200">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent">
-          {editingBlog ? "Edit Blog Post" : "Create New Blog Post"}
-        </h2>
-        <p className="text-gray-600 mt-2">
-          {editingBlog ? "Update your blog post with new information" : "Share your thoughts with the world"}
-        </p>
-      </div> */}
-
       <div className="p-8">
         {/* Success Message */}
         {success && (
@@ -299,4 +290,3 @@ const BlogForm = ({ token, editingBlog, setEditingBlog, refreshBlogs }) => {
 }
 
 export default BlogForm;
-

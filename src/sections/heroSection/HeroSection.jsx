@@ -36,7 +36,7 @@ export default function HeroSection() {
   });
 
   return (
-    <section className="py-16 mt-6 md:mt-22 overflow-hidden">
+    <section className="py-16 mt-4 md:mt-12 overflow-hidden">
       <div className="w-[95%] lg:w-[75%] mx-auto flex flex-col-reverse md:flex-row items-center justify-between">
         {/* Text Content */}
         <div className="md:w-1/2 w-full text-center md:text-left">
