@@ -80,9 +80,9 @@ const Banner = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12">
           {/* Left Content */}
           <div className="lg:w-1/2 text-center lg:text-left space-y-6 md:space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-50 to-blue-50 border border-red-100 rounded-full text-xs md:text-sm font-medium text-gray-700">
+            <div className="inline-flex items-center gap-2 px-2 bg-gradient-to-r from-red-50 to-blue-50 text-xs md:text-sm font-semibold text-red-600">
               <div className="w-2 h-2 bg-gradient-to-r from-red-600 to-blue-900 rounded-full animate-pulse"></div>
-              Ready to innovate
+              READY TO INNOVATE
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
@@ -103,7 +103,7 @@ const Banner = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button
                 onClick={handleStartProjectClick}
-                className="group relative px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-red-600 to-blue-900 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer"
+                className="group relative px-6 md:px-4 py-1 md:py-2 bg-gradient-to-r from-red-600 to-blue-900 text-gray-300 font-semibold rounded-xl shadow-lg hover:text-white cursor-pointer"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Start Your Project

@@ -120,7 +120,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="scroll-smooth">
       <head>
         {/* Favicon and Icons */}
-        <link rel="icon" href="/images/favicon.ico" sizes="any" />
+        <link rel="icon" href="/images/faviconimage.png" sizes="128x128" />
         <link rel="icon" href="/images/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />

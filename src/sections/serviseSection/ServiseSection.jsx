@@ -200,7 +200,7 @@ const ServicesTree = () => {
         {/* Web Development Card */}
         <div className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-xl w-full max-w-sm lg:w-1/3 relative text-gray-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100/80">
           <h3 className="flex items-center text-xl font-semibold mb-4"
-              style={{ color: 'rgba(41, 34, 195, 1)' }}>
+              style={{ color: 'rgba(25,20,150,1)' }}>
             💻 Web Development
             <span className="ml-auto text-sm text-gray-500">• Technical</span>
           </h3>
@@ -270,7 +270,7 @@ const ServicesTree = () => {
         {/* DevOps Card */}
         <div className="bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-xl w-full md:w-1/2 text-gray-700 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100/80">
           <h3 className="flex items-center text-xl font-semibold mb-4"
-              style={{ color: 'rgba(41, 34, 195, 1)' }}>
+              style={{ color: 'rgba(25,20,150,1)' }}>
             ☁️ DevOps & Cloud
             <span className="ml-auto text-sm text-gray-500">• Infrastructure</span>
           </h3>

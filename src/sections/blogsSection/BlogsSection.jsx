@@ -169,7 +169,7 @@ const BlogSection = () => {
   }, []);
 
   return (
-    <section className="relative py-20 bg-gradient-to-br from-white via-red-50/30 to-blue-50/30 overflow-hidden">
+    <section id="blogs" className="relative py-20 bg-gradient-to-br from-white via-red-50/30 to-blue-50/30 overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-red-500 to-red-600 rounded-full blur-3xl animate-pulse"></div>

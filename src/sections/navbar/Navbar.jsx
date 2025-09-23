@@ -19,7 +19,7 @@ export default function Navbar() {
     { id: "#services", label: "Services" },
     { id: "#projects", label: "Projects" },
     { id: "#team", label: "Careers" },
-    { id: "/blogs", label: "Blogs" },
+    { id: "#blogs", label: "Blogs" },
     { id: "#contact", label: "Contact us" },
   ];
 
@@ -111,8 +111,8 @@ export default function Navbar() {
             <motion.button
               key={link.id}
               onClick={() => handleLinkClick(link.id)}
-              className={`relative cursor-pointer hover:text-pink-500 text-black transition-all duration-300 ${
-                activeLink === link.id ? "text-pink-500" : ""
+              className={`relative cursor-pointer hover:text-red-500 text-black transition-all duration-300 ${
+                activeLink === link.id ? "text-red-600" : ""
               }`}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -121,7 +121,7 @@ export default function Navbar() {
               {link.label}
               <motion.span
                 layoutId="underline"
-                className="absolute bottom-0 left-0 h-[2px] w-full bg-pink-500"
+                className="absolute bottom-0 left-0 h-[2px] w-full bg-red-500"
                 initial={{ width: "0%" }}
                 animate={
                   activeLink === link.id ? { width: "100%" } : { width: "0%" }
@@ -175,9 +175,9 @@ export default function Navbar() {
               <motion.button
                 key={link.id}
                 onClick={() => handleLinkClick(link.id)}
-                className={`block px-4 py-2 text-black hover:bg-pink-500 hover:text-white transition-all duration-300 ${
+                className={`block px-4 py-2 text-black hover:bg-red-500 hover:text-white transition-all duration-300 ${
                   activeLink === link.id
-                    ? "text-pink-500 border-b-2 border-pink-500"
+                    ? "text-red-500 border-b-2 border-red-600"
                     : ""
                 }`}
                 initial={{ y: -20, opacity: 0 }}

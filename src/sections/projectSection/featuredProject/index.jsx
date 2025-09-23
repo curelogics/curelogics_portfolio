@@ -1,76 +1,71 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 import projects from "../data/Data";
 import Button from "@/components/globalcomponents/Button";
-// import Button from "../../../components/globalcomponents/Button";
 
 const FeatureSection = () => {
   return (
-    <div className="py-16 ">
-      <div className="flex flex-col gap-10 p-6 w-full lg:w-[80%] m-auto  ">
-        <h1 className="text-red-500 text-4xl font-bold text-center">
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4 lg:px-0 flex flex-col gap-14">
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-red-600 tracking-wide">
           Projects We Have Worked On
         </h1>
+
         {projects.map((project, index) => (
           <div
             key={index}
-            className={`relative flex  w-full lg:flex-row bg-transparent flex-col-reverse rounded-lg overflow-hidden transform transition-all duration-300  ${
+            className={`flex flex-col lg:flex-row gap-8 items-center ${
               index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
             }`}
           >
-            <div className="md:p-8 p-4 flex-1 flex flex-col justify-center md:min-h-[500px] shadow-2xl relative z-10 md:rounded-lg bg-white">
-              <h3 className="text-red-500">Featured Project</h3>
-              <h3 className="text-2xl font-semibold text-gray-800">
+            {/* Text Content */}
+            <div className="lg:w-1/2 flex flex-col justify-center bg-white rounded-2xl p-6 shadow-lg md:shadow-xl">
+              <span className="text-red-500 font-semibold uppercase text-sm">
+                Featured Project
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-2">
                 <a
-                  target="_blank"
-                  className="text-blue-400 "
                   href={project.link}
+                  target="_blank"
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-blue-700 hover:from-blue-700 hover:to-red-600 transition-all duration-300"
                 >
                   {project.title}
                 </a>
-              </h3>
-              <p className="text-gray-600 mt-3">{project.description}</p>
-              <div className="flex flex-wrap mt-4">
-                {project.technologies.map((tech, index) => (
+              </h2>
+              <p className="text-gray-700 mt-4 text-sm md:text-base leading-relaxed">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mt-4">
+                {project.technologies.map((tech, idx) => (
                   <span
-                    key={index}
-                    className="bg-gray-200 text-gray-600 px-2 py-1 rounded-lg text-sm mr-2 mt-2"
+                    key={idx}
+                    className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs md:text-sm font-medium"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              <div className="w-2/3 mt-6">
-                <Button text={"View Project"} />
+              <div className="mt-6 w-max">
+                <Button text="View Project" />
               </div>
             </div>
-            <div className="lg:w-1/2 w-full relative h-[350px] md:-mt-8 -mb-6 lg:h-[600px]">
-              <a
-                className={`  flex justify-center items-center h-full w-full md:h-full  object-cover rounded-lg mx-auto  md:shadow-xlxl ${
-                  index % 2 === 0 ? " md:-translate-x-10" : " md:translate-x-10"
-                } h-2/3  m-auto  absolute`}
-                target="_blank"
-                href={project.link}
-              >
-                <motion.img
-                  className={`w-full md:h-2/3 h-[300px] object-cover rounded-lg   md:shadow-2xl  ${
-                    index % 2 === 0
-                      ? " md:-translate-x-10 md:ml-40"
-                      : " md:translate-x-10 md:mr-40"
-                  } h-2/3  m-auto  absolute`}
+
+            {/* Image */}
+            <div className="lg:w-1/2 w-full rounded-2xl overflow-hidden shadow-lg">
+              <a href={project.link} target="_blank" className="block">
+                <img
                   src={project.image}
                   alt={project.title}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
+                  className="w-full h-auto object-contain rounded-2xl"
                 />
               </a>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
