@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { MoveLeft, MoveRight, Sparkles } from "lucide-react";
 import { ExternalLink, Code2, Eye, ChevronRight, Zap, Globe, Database, Server } from 'lucide-react';
 
-// ProjectCard Component (improved version)
+// ProjectCard Component
 const ProjectCard = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -22,31 +22,23 @@ const ProjectCard = ({ project }) => {
   const remainingCount = Math.max(0, (project.technologies?.length || 0) - 6);
 
   return (
-    <div 
+    <div
       className="relative h-full group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Main Card Container - Fixed overflow and positioning */}
       <div className={`
         relative h-full bg-white rounded-2xl shadow-lg border border-gray-200 
         transition-all duration-700 ease-out transform-gpu overflow-hidden
         ${isHovered ? 'shadow-2xl shadow-red-500/20 -translate-y-1 sm:-translate-y-2 scale-[1.01] sm:scale-[1.02]' : 'hover:shadow-xl'}
       `}>
-        
-        {/* Enhanced Gradient Border Effect - Fixed positioning to stay within card */}
         <div className={`
           absolute inset-[1px] rounded-2xl transition-all duration-500 z-0
           bg-gradient-to-r from-red-500/20 via-purple-500/20 to-blue-500/20
           ${isHovered ? 'opacity-100' : 'opacity-0'}
         `} />
-
-        {/* Content Container */}
         <div className="relative z-10 h-full flex flex-col bg-white rounded-2xl">
-          
-          {/* Image Section - Fixed button positioning */}
           <div className="relative h-48 sm:h-52 md:h-56 lg:h-48 xl:h-52 overflow-hidden rounded-t-2xl bg-gradient-to-br from-red-50 via-blue-50 to-purple-50">
-            {/* Loading Placeholder */}
             {!imageLoaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-red-50 to-blue-50">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-red-600 to-blue-900 relative">
@@ -56,8 +48,6 @@ const ProjectCard = ({ project }) => {
                 </div>
               </div>
             )}
-            
-            {/* Project Image */}
             <img
               src={project.image || "https://via.placeholder.com/400x300?text=Project+Image"}
               alt={project.title || "Project"}
@@ -69,22 +59,18 @@ const ProjectCard = ({ project }) => {
               onLoad={() => setImageLoaded(true)}
               onError={() => setImageLoaded(true)}
               loading="lazy"
-              style={{ 
+              style={{
                 filter: isHovered ? 'contrast(1.1) saturate(1.1)' : 'contrast(1) saturate(1)',
                 transition: 'all 0.7s ease-out'
               }}
             />
-            
-            {/* Enhanced Overlay Gradient */}
             <div className={`
               absolute inset-0 transition-all duration-500 rounded-t-2xl
-              ${isHovered 
-                ? 'bg-gradient-to-t from-black/70 via-red-900/20 to-blue-900/10' 
+              ${isHovered
+                ? 'bg-gradient-to-t from-black/70 via-red-900/20 to-blue-900/10'
                 : 'bg-gradient-to-t from-black/50 via-transparent to-transparent'
               }
             `} />
-            
-            {/* Floating Action Button - Fixed positioning to stay within bounds */}
             <div className={`
               absolute top-3 right-3 sm:top-4 sm:right-4 transition-all duration-500 transform z-20
               ${isHovered ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-1 opacity-0 scale-90'}
@@ -103,8 +89,6 @@ const ProjectCard = ({ project }) => {
                 <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700 group-hover/btn:text-white transition-colors duration-300" />
               </a>
             </div>
-
-            {/* Project Status Badge - Fixed positioning */}
             <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20">
               <div className="flex items-center space-x-1 px-2 py-1 sm:px-3 sm:py-1 bg-gradient-to-r from-green-500 to-emerald-500 backdrop-blur-sm rounded-full shadow-lg">
                 <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-pulse"></div>
@@ -112,28 +96,18 @@ const ProjectCard = ({ project }) => {
               </div>
             </div>
           </div>
-
-          {/* Content Section */}
           <div className="flex-1 p-4 sm:p-5 lg:p-6 flex flex-col">
-            
-            {/* Title */}
             <h3 className="text-lg sm:text-xl lg:text-xl font-bold text-gray-900 mb-2 sm:mb-3 line-clamp-2 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-red-600 group-hover:to-blue-600 group-hover:bg-clip-text transition-all duration-500">
               {project.title || "Project Title"}
             </h3>
-
-            {/* Description */}
-            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 line-clamp-3 flex-1">
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-1 line-clamp-3 flex-1">
               {project.description || "Project description will be displayed here."}
             </p>
-
-            {/* Technologies Section */}
-            <div className="mb-4 sm:mb-5 lg:mb-6">
-              <div className="flex items-center mb-2 sm:mb-3">
+            <div className="mb-2">
+              <div className="flex items-center">
                 <Code2 className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500 mr-1.5 sm:mr-2" />
                 <span className="text-xs sm:text-sm font-semibold text-gray-700">Tech Stack</span>
               </div>
-              
-              {/* Technology Pills */}
               <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {primaryTechs.map((tech, index) => (
                   <div
@@ -151,8 +125,6 @@ const ProjectCard = ({ project }) => {
                     <span className="truncate max-w-[100px] sm:max-w-none">{tech}</span>
                   </div>
                 ))}
-                
-                {/* Remaining Count */}
                 {remainingCount > 0 && (
                   <div className="flex items-center px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-medium bg-gradient-to-r from-red-500 to-blue-500 text-white shadow-sm">
                     <span>+{remainingCount}</span>
@@ -160,17 +132,12 @@ const ProjectCard = ({ project }) => {
                 )}
               </div>
             </div>
-
-            {/* Action Footer */}
             <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-100">
-              {/* View Details */}
               <button className="group/details flex items-center space-x-1 sm:space-x-2 text-gray-600 hover:text-blue-600 transition-colors duration-300">
                 <Eye className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="text-xs sm:text-sm font-medium">Details</span>
                 <ChevronRight className="w-2 h-2 sm:w-3 sm:h-3 transform group-hover/details:translate-x-1 transition-transform duration-300" />
               </button>
-
-              {/* Live Link */}
               <a
                 href={project.link || "#"}
                 target="_blank"
@@ -194,8 +161,6 @@ const ProjectCard = ({ project }) => {
             </div>
           </div>
         </div>
-
-        {/* Floating Particles (Decorative) - Fixed positioning */}
         <div className={`
           absolute inset-0 pointer-events-none transition-opacity duration-1000 overflow-hidden rounded-2xl
           ${isHovered ? 'opacity-100' : 'opacity-0'}
@@ -222,64 +187,79 @@ const ProjectCard = ({ project }) => {
 const sampleProjects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A modern, responsive e-commerce platform built with React and Node.js featuring real-time inventory management, secure payment processing, and advanced analytics dashboard.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "Node.js", "MongoDB", "Express", "Stripe", "Redis", "AWS", "TypeScript"],
-    link: "https://example.com"
+    title: "videotest.testrtc.com",
+    description: "WebRTC testing tool for real-time video and audio quality checks, enabling 10K+ monthly test sessions with detailed performance metrics and diagnostics.",
+    image: "/images/testrtc.png",
+    technologies: ["React", "Node.js", "WebRTC", "AWS"],
+    link: "https://videotest.testrtc.com"
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates, team collaboration features, advanced analytics, and project tracking capabilities.",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Socket.io", "Tailwind CSS"],
-    link: "https://example.com"
+    title: "orijin.io",
+    description: "Agriculture platform for farm management, digital payments, and EUDR compliance, supporting 100K+ farm records and transactions with real-time insights.",
+    image: "/images/orijin.png",
+    technologies: ["Express.js", "React", "Node.js", "MongoDB", "TypeScript"],
+    link: "https://orijin.io"
   },
   {
     id: 3,
-    title: "Weather Dashboard",
-    description: "A comprehensive weather dashboard with interactive maps, detailed forecasting, location-based weather alerts, and historical weather data analysis.",
-    image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    technologies: ["Vue.js", "Python", "FastAPI", "Docker", "Chart.js", "OpenWeather API"],
+    title: "AI Markdown Editor",
+    description: "Collaborative WYSIWYG Markdown editor with AI integration, enabling seamless real-time editing for 5K+ concurrent users and intelligent content suggestions.",
+    image: "/images/tiptap.png",
+    technologies: ["Tiptap", "Yjs", "Next.js", "RAG", "Hocus Pocus"],
     link: "https://example.com"
   },
   {
     id: 4,
-    title: "Social Media Analytics",
-    description: "Advanced social media analytics platform with sentiment analysis, engagement tracking, competitor analysis, and automated reporting features.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "Python", "Django", "PostgreSQL", "Redis", "Celery"],
-    link: "https://example.com"
+    title: "hellosenseai.com",
+    description: "AI receptionist for small businesses, handling 1M+ customer calls and messages monthly with automated scheduling, messaging, and CRM integration.",
+    image: "/images/hellosenseai.png",
+    technologies: ["Lovable", "Supabase", "FastAPI", "Next.js", "VAPI"],
+    link: "https://hellosenseai.com"
   },
   {
     id: 5,
-    title: "Learning Management System",
-    description: "A comprehensive LMS with course creation tools, student progress tracking, interactive assessments, and video conferencing integration.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    technologies: ["Angular", "Node.js", "MongoDB", "Socket.io", "WebRTC"],
+    title: "AI Voice Chatbot/Agent",
+    description: "Automated AI voice assistant for financial institutions, processing 100K+ voice queries monthly with natural speech synthesis and advanced workflows.",
+    image: "/images/ChatBot.png",
+    technologies: ["Node.js", "VAPI", "n8n", "ElevenLabs", "SDKs", "RAG"],
     link: "https://example.com"
   },
   {
     id: 6,
-    title: "Financial Dashboard",
-    description: "Real-time financial dashboard with portfolio tracking, market analysis, risk assessment, and automated trading capabilities.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "Chart.js"],
+    title: "docus.ai",
+    description: "Medical AI platform offering health assistant, AI doctor, and lab test interpretation, serving 500K+ patients worldwide with secure, scalable infrastructure.",
+    image: "/images/docusai.png",
+    technologies: ["Next.js", "Node.js", "Vercel", "AI Integrations"],
+    link: "https://docus.ai"
+  },
+  {
+    id: 7,
+    title: "qiyas.pro",
+    description: "Quiz platform with multilingual support and admin dashboards, powering 50K+ quizzes completed monthly with real-time analytics and user management.",
+    image: "/images/qiyaspro.png",
+    technologies: ["Loveable", "Next.js", "Supabase"],
+    link: "https://qiyas.pro"
+  },
+  {
+    id: 8,
+    title: "Crypto Arbitrage Bot",
+    description: "Low-latency trading bot executing 1K+ daily arbitrage trades with MetaMask/Phantom login, real-time order book syncing, and adaptive cross-exchange strategies.",
+    image: "/images/arbitrage.png",
+    technologies: ["Node.js", "Express.js", "Socket.IO", "CCXT Pro"],
     link: "https://example.com"
   }
 ];
 
-// Custom Swiper Implementation (since we can't import Swiper)
+// Custom Swiper Implementation with Circular Looping
 const CustomSwiper = ({ children, autoplay = true, spaceBetween = 30, onSlideChange }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(autoplay);
   const containerRef = useRef(null);
   const totalSlides = React.Children.count(children);
-  
-  // Calculate slides per view based on screen size
+  const extendedSlides = [...children, ...children.slice(0, 3)]; // Duplicate first 3 slides for seamless looping
   const [slidesPerView, setSlidesPerView] = useState(1);
-  
+
   useEffect(() => {
     const updateSlidesPerView = () => {
       if (window.innerWidth >= 1024) {
@@ -290,68 +270,99 @@ const CustomSwiper = ({ children, autoplay = true, spaceBetween = 30, onSlideCha
         setSlidesPerView(1);
       }
     };
-    
+
     updateSlidesPerView();
     window.addEventListener('resize', updateSlidesPerView);
     return () => window.removeEventListener('resize', updateSlidesPerView);
   }, []);
 
-  // Autoplay functionality
+  // Autoplay functionality with circular looping
   useEffect(() => {
     if (!isAutoplay) return;
-    
+
     const interval = setInterval(() => {
       setCurrentSlide(prev => {
-        const maxSlide = Math.max(0, totalSlides - slidesPerView);
-        return prev >= maxSlide ? 0 : prev + 1;
+        const nextSlide = prev + 1;
+        if (nextSlide >= totalSlides) {
+          setTimeout(() => {
+            containerRef.current.style.transition = 'none';
+            setCurrentSlide(0);
+          }, 500);
+          return nextSlide;
+        }
+        return nextSlide;
       });
     }, 3500);
-    
+
     return () => clearInterval(interval);
-  }, [isAutoplay, totalSlides, slidesPerView]);
+  }, [isAutoplay, totalSlides]);
+
+  // Reset transition after jump to start
+  useEffect(() => {
+    if (currentSlide === 0 && containerRef.current) {
+      setTimeout(() => {
+        containerRef.current.style.transition = 'transform 0.5s ease-out';
+      }, 50);
+    }
+  }, [currentSlide]);
 
   const goToSlide = (index) => {
-    const maxSlide = Math.max(0, totalSlides - slidesPerView);
-    setCurrentSlide(Math.min(index, maxSlide));
-    if (onSlideChange) onSlideChange(index);
+    setCurrentSlide(index % totalSlides);
+    if (onSlideChange) onSlideChange(index % totalSlides);
   };
 
   const nextSlide = () => {
-    const maxSlide = Math.max(0, totalSlides - slidesPerView);
-    setCurrentSlide(prev => prev >= maxSlide ? 0 : prev + 1);
+    setCurrentSlide(prev => {
+      const nextSlide = prev + 1;
+      if (nextSlide >= totalSlides) {
+        setTimeout(() => {
+          containerRef.current.style.transition = 'none';
+          setCurrentSlide(0);
+        }, 500);
+        return nextSlide;
+      }
+      return nextSlide;
+    });
   };
 
   const prevSlide = () => {
-    const maxSlide = Math.max(0, totalSlides - slidesPerView);
-    setCurrentSlide(prev => prev <= 0 ? maxSlide : prev - 1);
+    setCurrentSlide(prev => {
+      const prevSlide = prev - 1;
+      if (prevSlide < 0) {
+        setTimeout(() => {
+          containerRef.current.style.transition = 'none';
+          setCurrentSlide(totalSlides - 1);
+        }, 500);
+        return totalSlides - 1;
+      }
+      return prevSlide;
+    });
   };
 
   const slideWidth = `${100 / slidesPerView}%`;
   const translateX = -(currentSlide * (100 / slidesPerView));
 
   return (
-    <div 
+    <div
       className="relative overflow-hidden"
       onMouseEnter={() => setIsAutoplay(false)}
       onMouseLeave={() => setIsAutoplay(autoplay)}
     >
-      <div 
+      <div
         ref={containerRef}
         className="flex transition-transform duration-500 ease-out"
         style={{ transform: `translateX(${translateX}%)` }}
       >
-        {React.Children.map(children, (child, index) => (
-          <div 
+        {extendedSlides.map((child, index) => (
+          <div
             key={index}
-            className="flex-shrink-0 px-4"
+            className="flex-shrink-0 px-2"
             style={{ width: slideWidth }}
           >
             {child}
           </div>
         ))}
       </div>
-      
-      {/* Navigation functions exposed to parent */}
       <div className="swiper-navigation" style={{ display: 'none' }}>
         <button onClick={prevSlide} data-action="prev" />
         <button onClick={nextSlide} data-action="next" />
@@ -364,7 +375,6 @@ const ProjectsSection = () => {
   const swiperRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Function to navigate Swiper manually
   const handlePrev = () => {
     const prevBtn = swiperRef.current?.querySelector('[data-action="prev"]');
     if (prevBtn) {
@@ -381,55 +391,41 @@ const ProjectsSection = () => {
 
   return (
     <section className="relative py-20 bg-gradient-to-br from-white via-red-50/30 to-blue-50/30 overflow-hidden">
-      {/* Decorative Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-red-500 to-red-600 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-red-600 to-blue-900 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
-
-      {/* Animated Grid Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="h-full w-full bg-gradient-to-r from-red-600 to-blue-900" 
-             style={{
-               backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
-               backgroundSize: '40px 40px'
-             }}>
+        <div className="h-full w-full bg-gradient-to-r from-red-600 to-blue-900"
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }}>
         </div>
       </div>
-
       <div className="container mx-auto px-4 relative z-10">
-        {/* Enhanced Section Header */}
         <div className="text-center mb-16 relative">
-          {/* Main Heading */}
           <div className="relative">
             <h2 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-red-600 via-red-500 to-blue-900 bg-clip-text text-transparent mb-4 leading-tight">
               Our Projects
             </h2>
           </div>
-
-          {/* Subtitle */}
           <p className="text-xl lg:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed font-medium">
             Discover our portfolio of innovative solutions that transform ideas into
             <span className="bg-gradient-to-r from-red-600 to-blue-900 bg-clip-text text-transparent font-semibold"> extraordinary digital experiences</span>
           </p>
-
-          {/* Decorative Line */}
           <div className="flex items-center justify-center mt-8">
             <div className="h-px bg-gradient-to-r from-transparent via-red-500 to-transparent w-32"></div>
             <div className="w-2 h-2 bg-gradient-to-r from-red-600 to-blue-900 rounded-full mx-4"></div>
             <div className="h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent w-32"></div>
           </div>
         </div>
-
-        {/* Enhanced Navigation Section */}
         <div className="flex justify-between items-center mb-12">
           <div className="hidden lg:flex items-center space-x-4">
             <div className="h-px bg-gradient-to-r from-red-600 to-blue-900 w-20"></div>
             <span className="text-sm font-semibold text-gray-600 uppercase tracking-wider">Portfolio Showcase</span>
           </div>
-
-          {/* Enhanced Navigation Buttons */}
           <div className="flex items-center space-x-3">
             <button
               onClick={handlePrev}
@@ -439,7 +435,6 @@ const ProjectsSection = () => {
               <MoveLeft className="w-5 h-5 text-gray-600 group-hover:text-red-500 transition-colors duration-300" />
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-600 to-blue-900 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
             </button>
-            
             <div className="hidden lg:flex items-center space-x-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200">
               <div className="flex space-x-1">
                 <div className="w-2 h-2 rounded-full bg-gradient-to-r from-red-600 to-blue-900 animate-pulse"></div>
@@ -448,7 +443,6 @@ const ProjectsSection = () => {
               </div>
               <span className="text-xs font-medium text-gray-600 ml-2">Slide Navigation</span>
             </div>
-
             <button
               onClick={handleNext}
               className="group relative w-12 h-12 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center transition-all duration-300 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-1"
@@ -459,10 +453,7 @@ const ProjectsSection = () => {
             </button>
           </div>
         </div>
-
-        {/* Enhanced Swiper Container */}
         <div className="relative">
-          {/* Custom Swiper Implementation */}
           <div ref={swiperRef} className="lg:h-[48rem] w-full pb-12">
             <CustomSwiper
               autoplay={true}
@@ -479,8 +470,6 @@ const ProjectsSection = () => {
             </CustomSwiper>
           </div>
         </div>
-
-        {/* Project Counter */}
         <div className="text-center mt-8">
           <div className="inline-flex items-center space-x-4 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm">
             <div className="flex items-center space-x-2">
