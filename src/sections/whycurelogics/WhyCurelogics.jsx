@@ -7,9 +7,9 @@ const WhyCureLogics = () => {
     <section className="  w-full text-sm flex  items-start ">
       <div className="container px-6 md:w-[80%] mx-auto  ">
         <Heading text={"Why CureLogics"} />
-        <h3 className="text-2xl font-extrabold text-gray-900 leading-snug mb-10">
+        <h3 className="text-2xl font-bold text-gray-900 leading-snug mb-10">
           Why CureLogics Stands Out as Your <br />
-          <span className="bg-gradient-to-r from-red-600 to-blue-900 bg-clip-text text-transparent font-semibold">Premier Digital Partner?</span>
+          <span className="bg-gradient-to-r from-red-600 to-blue-900 bg-clip-text text-transparent font-bold">Premier Digital Partner?</span>
           
         </h3>
 

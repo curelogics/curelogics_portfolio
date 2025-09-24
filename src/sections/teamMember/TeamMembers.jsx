@@ -209,12 +209,14 @@ const TeamMembers = () => {
                 </div>
               </Link>
 
-              <div className="transition-all duration-500 hover:scale-105 hover:shadow-xl" data-aos="fade-up" data-aos-delay="500">
+              <div className="transition-all duration-500">
+                <div data-aos="fade-up" data-aos-delay="500">
                 <TeamMemberCard
                   title={"UI/UX Designer"}
                   desc={"Creative Designer"}
                   img={"/images/team5.png"}
                 />
+                </div>
               </div>
 
               <Link

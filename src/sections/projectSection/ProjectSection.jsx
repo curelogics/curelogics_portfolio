@@ -79,7 +79,7 @@ const ProjectCard = ({ project }) => {
                 href={project.link || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/btn w-8 h-8 sm:w-10 sm:h-10 bg-white/95 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-gradient-to-r hover:from-red-500 hover:to-blue-500 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="group/btn w-8 h-8 sm:w-10 sm:h-10 bg-white/95 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-gradient-to-r hover:from-red-600 hover:to-blue-900 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
                 onClick={(e) => {
                   if (!project.link) {
                     e.preventDefault();
@@ -100,10 +100,11 @@ const ProjectCard = ({ project }) => {
             <h3 className="text-lg sm:text-xl lg:text-xl font-bold text-gray-900 mb-2 sm:mb-3 line-clamp-2 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-red-600 group-hover:to-blue-600 group-hover:bg-clip-text transition-all duration-500">
               {project.title || "Project Title"}
             </h3>
-            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-1 line-clamp-3 flex-1">
+            {/* ↓ margin fixed here ↓ */}
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-0 line-clamp-3 flex-1">
               {project.description || "Project description will be displayed here."}
             </p>
-            <div className="mb-2">
+            <div className="mt-1">
               <div className="flex items-center">
                 <Code2 className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500 mr-1.5 sm:mr-2" />
                 <span className="text-xs sm:text-sm font-semibold text-gray-700">Tech Stack</span>
@@ -116,7 +117,7 @@ const ProjectCard = ({ project }) => {
                       flex items-center space-x-1 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-medium
                       bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 border border-gray-200
                       hover:from-red-50 hover:to-blue-50 hover:text-gray-800 hover:border-red-200
-                      transition-all duration-300 transform hover:scale-105 hover:shadow-sm
+                      transition-all duration-300 transform hover:scale-105 hover:shadow-sm 
                       ${isHovered ? 'animate-pulse' : ''}
                     `}
                     style={{ animationDelay: `${index * 100}ms` }}
@@ -190,7 +191,7 @@ const sampleProjects = [
     title: "videotest.testrtc.com",
     description: "WebRTC testing tool for real-time video and audio quality checks, enabling 10K+ monthly test sessions with detailed performance metrics and diagnostics.",
     image: "/images/testrtc.png",
-    technologies: ["React", "Node.js", "WebRTC", "AWS"],
+    technologies: ["React", "Node.js", "WebRTC", "AWS", "TypeScript"],
     link: "https://videotest.testrtc.com"
   },
   {
@@ -238,7 +239,7 @@ const sampleProjects = [
     title: "qiyas.pro",
     description: "Quiz platform with multilingual support and admin dashboards, powering 50K+ quizzes completed monthly with real-time analytics and user management.",
     image: "/images/qiyaspro.png",
-    technologies: ["Loveable", "Next.js", "Supabase"],
+    technologies: ["Loveable", "Next.js", "Supabase", "Vercel", "TypeScript"],
     link: "https://qiyas.pro"
   },
   {
@@ -462,7 +463,7 @@ const ProjectsSection = () => {
             >
               {sampleProjects.map((project, index) => (
                 <div key={project.id || index} className="h-full pb-6">
-                  <div className="h-[600px]">
+                  <div className="h-[540px]">
                     <ProjectCard project={project} />
                   </div>
                 </div>
