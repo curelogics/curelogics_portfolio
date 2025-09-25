@@ -41,7 +41,7 @@ const AdminLogin = () => {
         setEmail("")
         setPassword("")
         showNotification("Welcome back! Successfully logged in.", "success")
-        router.push("/admin/blogs")
+        router.push("/admin/dashboard")
       } else {
         setError(result.message)
       }
