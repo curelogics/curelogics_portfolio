@@ -95,10 +95,10 @@ const AdminLogin = () => {
       <Notification notification={notification} />
       <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 max-w-md w-full overflow-hidden">
         <div className="bg-red-600 px-8 py-6 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-blue-600"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-blue-900"></div>
           <div className="relative z-10">
             <h1 className="text-3xl font-bold text-white text-center">Admin Portal</h1>
-            <p className="text-white text-center mt-2 opacity-90">Secure access to blog management</p>
+            {/* <p className="text-white text-center mt-2 opacity-90">Secure access to blog management</p> */}
           </div>
         </div>
 
@@ -141,7 +141,7 @@ const AdminLogin = () => {
               disabled={isLoading}
               className="w-full py-4 bg-red-600 text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-blue-600 hover:from-red-700 hover:to-blue-700 transition-all duration-200"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-blue-900 hover:from-red-700 hover:to-blue-800 transition-all duration-200"></div>
               <div className="relative z-10">
                 {isLoading ? (
                   <div className="flex items-center justify-center text-white">
